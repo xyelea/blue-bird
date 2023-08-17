@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   // Jika "code" ada, lakukan proses tukar kode dengan sesi autentikasi
   if (code) {
     // Membuat klien Supabase dengan cookies
-    const supabase = createRouteHandlerClient({ cookies });
+    const supabase = createRouteHandlerClient<Database>({ cookies });
 
     // Menukarkan kode untuk mendapatkan sesi autentikasi
     await supabase.auth.exchangeCodeForSession(code);
